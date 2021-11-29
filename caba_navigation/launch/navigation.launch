@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<launch>
+
+    <arg name="map_file_name" default="onur_house_new"/>
+
+    <include file="$(find caba_description)/launch/display.launch"/>
+
+    <include file="$(find caba_navigation)/launch/amcl.launch"/>
+        
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+        <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+        <param name="base_global_planner" value="global_planner/GlobalPlanner" />
+        <rosparam file="$(find caba_navigation)/param/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
+        <rosparam file="$(find caba_navigation)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
+        <rosparam file="$(find caba_navigation)/param/local_costmap_params.yaml" command="load" />
+        <rosparam file="$(find caba_navigation)/param/global_costmap_params.yaml" command="load" /> 
+        <rosparam file="$(find caba_navigation)/param/move_base_params.yaml" command="load" />
+        <rosparam file="$(find caba_navigation)/param/dwa_local_planner_params.yaml" command="load" />
+    </node>
+
+    <!--  ****** Maps *****  -->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find caba_navigation)/maps/$(arg map_file_name).yaml" output="screen">
+            <param name="frame_id" value="map"/>
+    </node>
+
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find caba_navigation)/launch/navigation.rviz"/> 
+
+    <!-- ************** Laser Scan Matcher *********** -->
+    
+    <node pkg="laser_scan_matcher" type="laser_scan_matcher_node" name="laser_scan_matcher_node" output="screen">
+	
+	<rosparam file="$(find caba_navigation)/param/laser_scan_matcher_params.yaml" command="load" />
+        <remap from="scan" to="scan"/>
+        <remap from="odom" to="odom"/>
+    </node>
+    
+
+</launch>

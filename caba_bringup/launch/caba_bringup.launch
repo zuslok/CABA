@@ -1,0 +1,34 @@
+<launch>
+        <arg name="gui" default="false" />
+        <param name="use_gui" value="$(arg gui)"/>
+        <param name="robot_description" command="cat $(find caba_description)/urdf/caba.xacro" />
+
+        <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+        <node name="serial_node" pkg="rosserial_python" type="serial_node.py">
+                <param name="port" value="/dev/ttyACM0"/>
+        </node>
+
+        <node name="caba_controller" pkg="caba_bringup" type="caba_bringup" output="screen">
+                <param name="publish_tf" value="true" />
+                <param name="publish_rate" value="10.0" />
+                <param name="linear_scale_positive" value="11.2" />
+                <param name="linear_scale_negative" value="11.2" />
+                <param name="angular_scale_positive" value="11.15" />
+                <param name="angular_scale_negative" value="11.15" />
+                <param name="angular_scale_accel" value="0.0" />
+        </node>
+
+
+        <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
+          <param name="serial_port"         type="string" value="/dev/ttyUSB0"/>
+          <param name="serial_baudrate"     type="int"    value="115200"/><!--A1/A2 -->
+          <!--param name="serial_baudrate"     type="int"    value="256000"--><!--A3 -->
+          <param name="frame_id"            type="string" value="laser"/>
+          <param name="inverted"            type="bool"   value="false"/>
+          <param name="angle_compensate"    type="bool"   value="true"/>
+        </node>
+
+</launch>
