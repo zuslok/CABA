@@ -14,7 +14,7 @@ Robot Operating System (ROS) is being used for autonomous driving. Besides it ha
   
 ![CABA](https://github.com/zuslok/CABA/blob/4bab5570388d7fbaaa1ad60f2e4eb50bfaff1dea/caba_frontleft.jpeg)
   
- ***This repositery is only about the ROS part of the CABA. Computer Vision and Sensors are not explained in this repositery. ***
+ ***This repository is only about the autonomous driving of CABA. Computer Vision and Sensors are not explained in this repositery. ***
  
  ## Requirements 
  
