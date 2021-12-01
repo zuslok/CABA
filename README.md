@@ -5,7 +5,7 @@ It has 55 cm length and 35 cm width. It's produced from sheet metal and the weig
 to any area. The activation of CABA will help the law enforcement officers to develop tactics. In addition, in order to prevent possible loss of life, it will be an advantage for the law enforcement 
 officers if CABA enters the area that must or cannot be entered before the law enforcement officers and fulfills their duties.
   
-Robot Operating System (ROS) is being used for autonomous driving. Besides it has Raspberry Pi Camera v2 in order to detect humans. In order to analyze the enviroment, ÇABA has 4 sensors. These sensors are:
+Robot Operating System (ROS) is being used for autonomous driving. Besides it has Raspberry Pi Camera v2 in order to detect humans. For analyzing the enviroment, CABA has 4 sensors. These sensors are:
   
 * DfRobot Analog Ambient Light Sensor,                                                                                                                                    
 * MQ-135 Gas Sensor,                                                                                                                                                          
