@@ -57,7 +57,27 @@ You can check out the Arduino code in ***CABA/Arduino/DC_Motor_Control/DC_Motor_
 
 # How to Use CABA
 
-In order to use CABA your Jetson and your master computer need to connect the network.
+In order to use CABA your Jetson and your local computer need to connect the network.
+
+## 0. Prepare Your Local and Host Machine
+Preparing your local and host machine is a big deal in order to give ros commands from your local machine to your host machine. In order to do that make sure if you did these steps:
+* Your Local Machine
+ ```bash
+vim .bashrc
+ ```
+Type in .baschrc file:
+ ```bash
+export ROS_MASTER_URI=http://local_machine_ip:11311
+ ```
+* Your Host Machine
+ ```bash
+vim .bashrc
+ ```
+Type in .baschrc file:
+ ```bash
+export ROS_MASTER_URI=http://local_machine_ip:11311
+ ```
+For better explanation please check this [link](https://www.youtube.com/watch?v=rqWq7STbFrU)
 
 ## 1. Connect to Jetson via SSH
 Open the Linux terminal on your machine and run the following command: 
@@ -73,3 +93,36 @@ Thus it will launch the serial controller node connected to the Arduino, odometr
 
 ***CABA is ready to go!***
 
+## 3. Mapping
+For mapping you need to first run following commands on your local machine terminal and then use your keyboard in order to drive the robot. First command will launch RViz and start the mapping by receiving datas from laser scanner.
+
+ ```bash
+roslaunch caba_mapping mapping.launch
+ ```
+ 
+You can use your keyboard for driving.
+
+ ```bash
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+ ```
+When mapping is complete run the following command in order to save the map:
+
+ ```bash
+rosrun map_server map_saver -f mymap
+ ```
+After saving map you should move the map datas to this directory ***CABA/caba_navigation/maps/***
+
+## 4. Navigation
+For final step to drive your robot autonomusly you need to run following command:
+ ```bash
+roslaunch caba_mapping navigation.launch
+ ```
+***Note:*** Before launching navigation, you need to change **the map file name** in navigation.launch:
+ ```bash
+ <arg name="map_file_name" default="mymap"/>
+ ```
+ 
+ When you launch navigation successfully you should see like this:
+ ![navigation](https://github.com/zuslok/CABA/blob/a2e15aba65ea4bba8e8d69ce80e392c17e8e6044/navigation_rviz.png)
+ 
+ Everything is set! You can give a goal for the robot to reach by using the "2D Nav Goal" arrow and CABA will go to that goal.
