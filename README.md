@@ -129,7 +129,7 @@ roslaunch caba_mapping navigation.launch
 
 ## Author
 👤 Onur Kolsuz
-- If you have a question about please send me an e-mail: ***kolsuzz.onur@gmail.com***
+- If you have a question about this project please send me an e-mail: ***kolsuzz.onur@gmail.com***
 - [LinkedIn](https://www.linkedin.com/in/onur-kolsuz-224153154/)
 
 ## Financial Contributors
