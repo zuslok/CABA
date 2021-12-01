@@ -126,3 +126,11 @@ roslaunch caba_mapping navigation.launch
  ![navigation](https://github.com/zuslok/CABA/blob/a2e15aba65ea4bba8e8d69ce80e392c17e8e6044/navigation_rviz.png)
  
  Everything is set! You can give a goal for the robot to reach by using the "2D Nav Goal" arrow and CABA will go to that goal.
+
+## Author
+👤 Onur Kolsuz
+- If you have a question about please send me an e-mail: ***kolsuzz.onur@gmail.com***
+- [LinkedIn](https://www.linkedin.com/in/onur-kolsuz-224153154/)
+
+## Financial Contributors
+This study was supported within the scope of TÜBİTAK 2209-B - Industry Oriented Undergraduate Thesis Support Program. Also special thanks to DOF Robotics which is our Industry Partner. 
